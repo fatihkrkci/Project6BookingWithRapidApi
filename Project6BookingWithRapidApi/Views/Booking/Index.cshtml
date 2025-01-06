@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<h1 class="text-center">Otel Arama</h1>
+
+<div class="container mt-5">
+    <form asp-action="Search" method="post" class="form-inline">
+        <div class="form-group mb-2">
+            <label for="query" class="sr-only">Şehir</label>
+            <input type="text" class="form-control" id="query" name="query" placeholder="Şehir Adı (Örn: Prague)" required />
+        </div>
+        <div class="form-group mb-2">
+            <label for="checkinDate" class="sr-only">Check-in Tarihi</label>
+            <input type="text" class="form-control" id="checkinDate" name="checkinDate" placeholder="Check-in (dd-mm-yyyy)" required />
+        </div>
+        <div class="form-group mb-2">
+            <label for="checkoutDate" class="sr-only">Check-out Tarihi</label>
+            <input type="text" class="form-control" id="checkoutDate" name="checkoutDate" placeholder="Check-out (dd-mm-yyyy)" required />
+        </div>
+        <div class="form-group mb-2">
+            <label for="adults" class="sr-only">Yetişkin Sayısı</label>
+            <input type="number" class="form-control" id="adults" name="adults" min="1" max="30" placeholder="Yetişkin Sayısı" required />
+        </div>
+        <div class="form-group mb-2">
+            <label for="children" class="sr-only">Çocuk Sayısı</label>
+            <input type="number" class="form-control" id="children" name="children" min="0" max="30" placeholder="Çocuk Sayısı" required />
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Ara</button>
+    </form>
+</div>
