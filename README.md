@@ -14,6 +14,8 @@
 
 * 🧒 Çocuk sayısı
 
+## Sonuç Sayfası
+
 ✔️ Girilen kriterlere uyan oteller liste halinde gösterilir.
 
 ℹ️ Kullanıcılar listelenen otellerin şu bilgilerine erişebilir:
