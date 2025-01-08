@@ -62,7 +62,7 @@
 4️⃣ JSON veri yapısı, ViewModel'ler ile düzenlenip proje içerisinde kullanılabilir hale getirilmiştir.
 
 
-## 🖼️ Görseller
+## 🖼️ Proje Görselleri ve Video
 
 https://github.com/user-attachments/assets/c609632a-a70f-4c08-ac67-f034cd67026a
 
