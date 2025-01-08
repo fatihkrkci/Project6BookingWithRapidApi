@@ -1,33 +1,412 @@
-﻿@{
-    Layout = null;
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_BookingLayout.cshtml";
 }
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<section class="hero-section" style="background-image:url(~/sona-master/img/hero/hero-1.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="hero-text">
+                    <h1>Hayalindeki Oteli Bul</h1>
+                    <p>
+                        Uygun fiyatlı otel odalarını keşfetmek, uluslararası seyahatler için en iyi konaklama önerilerini bulmak artık çok kolay!
+                        OtelBul ile hayalinizdeki oteli hızlı ve güvenilir bir şekilde arayın, filtrelerinize en uygun seçenekleri anında listeleyin.
+                    </p>
+                    <a href="#" class="primary-btn">Hemen Keşfet</a>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
+                <div class="booking-form">
+                    <h3>Otelleri Keşfet</h3>
+                    <form asp-action="Search" method="post" onsubmit="showLoadingOverlay()">
+                        <div class="select-option">
+                            <label for="query">Şehir:</label>
+                            <input type="text" class="form-control" id="query" name="query" placeholder="Şehir Adı (Örn: Istanbul)" required />
+                        </div>
+                        <div class="check-date">
+                            <label for="checkinDate">Giriş Tarihi:</label>
+                            <input type="text" class="date-input" id="checkinDate" name="checkinDate" placeholder="gg.aa.yyyy" required>
+                            <i class="icon_calendar"></i>
+                        </div>
+                        <div class="check-date">
+                            <label for="checkoutDate">Çıkış Tarihi:</label>
+                            <input type="text" class="date-input" id="checkoutDate" name="checkoutDate" placeholder="gg.aa.yyyy" required>
+                            <i class="icon_calendar"></i>
+                        </div>
+                        <div class="select-option">
+                            <label for="adults">Yetişkin:</label>
+                            <input type="number" class="form-control" id="adults" name="adults" min="1" max="30" placeholder="Yetişkin Sayısı" required />
+                        </div>
+                        <div class="select-option">
+                            <label for="children">Çocuk:</label>
+                            <input type="number" class="form-control" id="children" name="children" min="0" max="30" placeholder="Çocuk Sayısı" required />
+                        </div>
+                        <button type="submit">Otel Bul</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-slider owl-carousel">
+        <div class="hs-item set-bg" data-setbg="/sona-master/img/hero/hero-1.jpg"></div>
+        <div class="hs-item set-bg" data-setbg="/sona-master/img/hero/hero-2.jpg"></div>
+        <div class="hs-item set-bg" data-setbg="/sona-master/img/hero/hero-3.jpg"></div>
+    </div>
+</section>
+<section class="aboutus-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="about-text">
+                    <div class="section-title">
+                        <span>HAKKIMIZDA</span>
+                        <h2>Hayalindeki Konaklama<br />Bir Tık Uzağında!</h2>
+                    </div>
+                    <p class="f-para">
+                        OtelBul.com, seyahat tutkunlarına otel, tatil köyü, daire ve daha fazlasını bulmaları için en hızlı ve kolay yolu sunar.
+                    </p>
+                    <p class="s-para">
+                        SHayalinizdeki konaklamayı keşfetmek için hemen başlayın!
+                    </p>
+                    <a href="#" class="primary-btn about-btn">Devamını Oku</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-pic">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img src="~/sona-master/img/about/about-1.jpg" alt="">
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="~/sona-master/img/about/about-2.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="services-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>NE YAPIYORUZ</span>
+                    <h2>Hizmetlerimizi Keşfedin</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6">
+                <div class="service-item">
+                    <i class="flaticon-036-parking"></i>
+                    <h4>Seyahat Planı</h4>
+                    <p>
+                        Seyahatinizi en iyi şekilde planlamanız için size rehberlik ediyoruz.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="service-item">
+                    <i class="flaticon-033-dinner"></i>
+                    <h4>
+                        Yemek Hizmeti
+                    </h4>
+                    <p>
+                        Size özel lezzetlerle dolu, kaliteli yemek hizmeti sunuyoruz.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="service-item">
+                    <i class="flaticon-026-bed"></i>
+                    <h4>
+                        Bebek Bakımı
+                    </h4>
+                    <p>
+                        Seyahatinizde bebeğinizin ihtiyaçlarını karşılayacak güvenilir bakım hizmeti sağlıyoruz.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="service-item">
+                    <i class="flaticon-024-towel"></i>
+                    <h4>Çamaşır Yıkama</h4>
+                    <p>
+                        Konforunuz için profesyonel çamaşır yıkama hizmeti sunuyoruz.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="service-item">
+                    <i class="flaticon-044-clock-1"></i>
+                    <h4>Şoför Kiralama</h4>
+                    <p>
+                        Seyahatlerinizde konforlu ve güvenli ulaşım için deneyimli sürücüler sağlıyoruz.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <div class="service-item">
+                    <i class="flaticon-012-cocktail"></i>
+                    <h4>Bar & İçecek</h4>
+                    <p>
+                        Keyifli anlarınız için geniş içecek seçenekleriyle hizmetinizdeyiz.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="hp-room-section">
+    <div class="container-fluid">
+        <div class="hp-room-items">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="hp-room-item set-bg" data-setbg="/sona-master/img/room/room-b1.jpg">
+                        <div class="hr-text">
+                            <h3>Çift Kişilik Oda</h3>
+                            <h2>5.373₺<span>/Gecelik</span></h2>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Boyut:</td>
+                                        <td>30 m²</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Kapasite:</td>
+                                        <td>Maksimum 5 kişi</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Yatak:</td>
+                                        <td>Kral Yatağı</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Hizmetler:</td>
+                                        <td>Wifi, Televizyon, Banyo, ...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="#" class="primary-btn">Detayları Gör</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="hp-room-item set-bg" data-setbg="/sona-master/img/room/room-b2.jpg">
+                        <div class="hr-text">
+                            <h3>Premium Kral Oda</h3>
+                            <h2>4.293₺<span>/Gecelik</span></h2>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Boyut:</td>
+                                        <td>30 m²</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Kapasite:</td>
+                                        <td>Maksimum 5 kişi</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Yatak:</td>
+                                        <td>Kral Yatağı</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Hizmetler:</td>
+                                        <td>Wifi, Televizyon, Banyo, ...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="#" class="primary-btn">Detayları Gör</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="hp-room-item set-bg" data-setbg="/sona-master/img/room/room-b3.jpg">
+                        <div class="hr-text">
+                            <h3>Deluxe Oda</h3>
+                            <h2>5.346₺<span>/Gecelik</span></h2>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Boyut:</td>
+                                        <td>30 m²</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Kapasite:</td>
+                                        <td>Maksimum 5 kişi</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Yatak:</td>
+                                        <td>Kral Yatağı</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Hizmetler:</td>
+                                        <td>Wifi, Televizyon, Banyo, ...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="#" class="primary-btn">Detayları Gör</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="hp-room-item set-bg" data-setbg="/sona-master/img/room/room-b4.jpg">
+                        <div class="hr-text">
+                            <h3>Aile Odası</h3>
+                            <h2>8.073₺<span>/Gecelik</span></h2>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Boyut:</td>
+                                        <td>30 m²</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Kapasite:</td>
+                                        <td>Maksimum 5 kişi</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Yatak:</td>
+                                        <td>Kral Yatağı</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Hizmetler:</td>
+                                        <td>Wifi, Televizyon, Banyo, ...</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="#" class="primary-btn">Detayları Gör</a>
+                        </div>
+                    </div>
+                </div>
 
-<h1 class="text-center">Otel Arama</h1>
-
-<div class="container mt-5">
-    <form asp-action="Search" method="post" class="form-inline">
-        <div class="form-group mb-2">
-            <label for="query" class="sr-only">Şehir</label>
-            <input type="text" class="form-control" id="query" name="query" placeholder="Şehir Adı (Örn: Prague)" required />
+            </div>
         </div>
-        <div class="form-group mb-2">
-            <label for="checkinDate" class="sr-only">Check-in Tarihi</label>
-            <input type="text" class="form-control" id="checkinDate" name="checkinDate" placeholder="Check-in (dd-mm-yyyy)" required />
+    </div>
+</section>
+<section class="testimonial-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Yorumlar</span>
+                    <h2>Müşteriler Ne Diyor?</h2>
+                </div>
+            </div>
         </div>
-        <div class="form-group mb-2">
-            <label for="checkoutDate" class="sr-only">Check-out Tarihi</label>
-            <input type="text" class="form-control" id="checkoutDate" name="checkoutDate" placeholder="Check-out (dd-mm-yyyy)" required />
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="testimonial-slider owl-carousel">
+                    <div class="ts-item">
+                        <p>
+                            Bir hafta sonu kaçamağı yapmak istiyorduk ve otelbul.com sayesinde harika bir konaklama deneyimi yaşadık. Otel çok temiz ve modern, çalışanlar son derece yardımcıydı. Hem dinlenebildik hem de şehrin tadını çıkarabildik. Kesinlikle tekrar tercih edeceğiz!
+                        </p>
+                        <div class="ti-author">
+                            <div class="rating">
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star-half_alt"></i>
+                            </div>
+                            <h5> - Emre Kılıç</h5>
+                        </div>
+                        <img src="~/otelbul-master/img/testimonial-logo.png" alt="">
+                    </div>
+                    <div class="ts-item">
+                        <p>
+                            Çalışma amaçlı bir haftalık İstanbul seyahatim için otelbul.com'dan konaklama rezervasyonu yaptım. Konum mükemmeldi ve otelin sunduğu olanaklar çok başarılıydı. İhtiyacım olan her şey için mükemmel bir deneyim oldu. Herkese tavsiye ediyorum.
+                        </p>
+                        <div class="ti-author">
+                            <div class="rating">
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                            </div>
+                            <h5> - Selin Güler</h5>
+                        </div>
+                        <img src="~/otelbul-master/img/testimonial-logo.png" alt="">
+                    </div>
+                    <div class="ts-item">
+                        <p>
+                            Eşimle birlikte balayımız için otelbul.com üzerinden bir otel rezervasyonu yaptık ve gerçekten harika bir deneyim yaşadık. Odanın manzarası inanılmazdı, personel çok ilgiliydi ve tüm taleplerimize anında cevap verdiler. Bu tatilimiz unutulmaz oldu.
+                        </p>
+                        <div class="ti-author">
+                            <div class="rating">
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                            </div>
+                            <h5> - Mehmet Özdemir</h5>
+                        </div>
+                        <img src="~/otelbul-master/img/testimonial-logo.png" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group mb-2">
-            <label for="adults" class="sr-only">Yetişkin Sayısı</label>
-            <input type="number" class="form-control" id="adults" name="adults" min="1" max="30" placeholder="Yetişkin Sayısı" required />
+    </div>
+</section>
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Otel Haberleri</span>
+                    <h2>Blogumuz & Etkinliklerimiz</h2>
+                </div>
+            </div>
         </div>
-        <div class="form-group mb-2">
-            <label for="children" class="sr-only">Çocuk Sayısı</label>
-            <input type="number" class="form-control" id="children" name="children" min="0" max="30" placeholder="Çocuk Sayısı" required />
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="blog-item set-bg" data-setbg="/sona-master/img/blog/blog-1.jpg">
+                    <div class="bi-text">
+                        <span class="b-tag">Gezi Turu</span>
+                        <h4><a href="#">Türkiye'nin Gizli Cennetleri</a></h4>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 15 Nisan, 2023</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-item set-bg" data-setbg="/sona-master/img/blog/blog-2.jpg">
+                    <div class="bi-text">
+                        <span class="b-tag">Kamp</span>
+                        <h4><a href="#">Doğada Kamp Yapmanın İpuçları</a></h4>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 18 Nisan, 2023</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-item set-bg" data-setbg="/sona-master/img/blog/blog-3.jpg">
+                    <div class="bi-text">
+                        <span class="b-tag">Etkinlik</span>
+                        <h4><a href="#">İstanbul Kültür Festivali</a></h4>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 21 Nisan, 2023</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="blog-item small-size set-bg" data-setbg="/sona-master/img/blog/blog-wide.jpg">
+                    <div class="bi-text">
+                        <span class="b-tag">Etkinlik</span>
+                        <h4><a href="#">Kapadokya'nın Büyüleyici Balon Turu</a></h4>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 08 Nisan, 2023</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-item small-size set-bg" data-setbg="/sona-master/img/blog/blog-10.jpg">
+                    <div class="bi-text">
+                        <span class="b-tag">Gezi</span>
+                        <h4><a href="#">İzmir'e Seyahat Rehberi</a></h4>
+                        <div class="b-time"><i class="icon_clock_alt"></i> 12 Nisan, 2023</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Ara</button>
-    </form>
-</div>
+    </div>
+</section>

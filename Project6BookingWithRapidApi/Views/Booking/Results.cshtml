@@ -1,29 +1,33 @@
-﻿@model List<Project6BookingWithRapidApi.ViewModels.HotelViewModel>
+﻿@model List<HotelViewModel>
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Results";
+    Layout = "~/Views/Shared/_BookingLayout.cshtml";
+}
 
-<h2 class="text-center">Otel Sonuçları</h2>
-
-<div class="container mt-4">
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th>Resim</th>
-                <th>Otel Adı</th>
-                <th>Puan</th>
-                <th>Yorum</th>
-            </tr>
-        </thead>
-        <tbody>
+<section class="rooms-section spad">
+    <div class="container">
+        <div class="row">
             @foreach (var hotel in Model)
             {
-                <tr>
-                    <td><img src="@hotel.PhotoUrl" alt="@hotel.Name" /></td>
-                    <td>@hotel.Name</td>
-                    <td>@hotel.ReviewScoreWord (@hotel.ReviewScore)</td>
-                    <td>@hotel.ReviewCount</td>
-                </tr>
+                <div class="col-lg-4 col-md-6">
+                    <div class="room-item">
+                        <img src="@hotel.PhotoUrl" alt="@hotel.Name" style="height:300px; width:auto; object-fit:cover">
+                        <div class="ri-text">
+                            <h4>@hotel.Name</h4>
+                            <h3>@hotel.ReviewScore<span> /10 (@hotel.ReviewScoreWord)</span></h3>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>@hotel.ReviewCount kişi tarafından değerlendirildi.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="#" class="primary-btn">Rezervasyon Detaylarını İncele</a>
+                        </div>
+                    </div>
+                </div>
             }
-        </tbody>
-    </table>
-</div>
+        </div>
+    </div>
+</section>
